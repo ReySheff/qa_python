@@ -50,7 +50,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_book_in_favorites('Гордость и предубеждение и зомби')
-        assert collector.get_list_of_favorites_books[-1] == 'Гордость и предубеждение и зомби'
+        assert collector.get_list_of_favorites_books()[-1] == 'Гордость и предубеждение и зомби'
 
 
     def test_add_book_in_favorites_book_not_in_books_rating(self):  # Нельзя добавить книгу в избранное, если её нет в словаре books_rating.
@@ -70,7 +70,7 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
         bookslist = collector.get_books_rating()
-        assert len(bookslist) == 2 and bookslist[0] == 'Гордость и предубеждение и зомби' and bookslist[1] =='Что делать, если ваш кот хочет вас убить'
+        assert len(bookslist) == 2 and 'Гордость и предубеждение и зомби' in bookslist and 'Что делать, если ваш кот хочет вас убить' in bookslist
 
     def get_books_with_specific_rating(self): # выводим список книг с определенным рейтингом
         collector = BooksCollector()
@@ -80,7 +80,7 @@ class TestBooksCollector:
         collector.set_book_rating('Что делать, если ваш кот хочет вас убить', 9)
         assert collector.get_books_with_specific_rating(5) == 'Гордость и предубеждение и зомби'
 
-    def get_books_with_specific_rating_not_in_list(self): # Если нет книги с таким рейтингом
+    def get_books_with_specific_rating_not_in_list(self): # Если нет книги с таким рейтингом для пуш
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')

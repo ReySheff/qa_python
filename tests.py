@@ -65,14 +65,14 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Гордость и предубеждение и зомби')
         assert len(collector.get_list_of_favorites_books()) == 0
 
-    def test_get_books_rating(self):
+    def test_get_books_rating(self): # проверка работы метода get_books_rating
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
         bookslist = collector.get_books_rating()
         assert len(bookslist) == 2 and 'Гордость и предубеждение и зомби' in bookslist and 'Что делать, если ваш кот хочет вас убить' in bookslist
 
-    def get_books_with_specific_rating(self): # выводим список книг с определенным рейтингом
+    def get_books_with_specific_rating(self): # Выводим список книг с определенным рейтингом
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
@@ -80,7 +80,7 @@ class TestBooksCollector:
         collector.set_book_rating('Что делать, если ваш кот хочет вас убить', 9)
         assert collector.get_books_with_specific_rating(5) == 'Гордость и предубеждение и зомби'
 
-    def get_books_with_specific_rating_not_in_list(self): # Если нет книги с таким рейтингом для пуш
+    def get_books_with_specific_rating_raiting_not_in_list(self): # Если нет книги с таким рейтингом
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
